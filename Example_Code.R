@@ -6,7 +6,8 @@ rm(list=ls()) # cleaning memory
 # setwd('C:/Users/Vdenis/OneDrive/Documents/Class/OCEAN_7194_FIELD/Lectures/Part 6') # set up working directory
 
 ## Packages and functions
-library(vegan)
+library(vegan) # install.packages('vegan')
+library(gclus) # install.packages('gclus')
 source('Function/coldiss.R')
 
 
@@ -71,17 +72,11 @@ boxplot(mod) # visualization of the dispersion
 
 
 ## PERMANOVA ##
-permanovaRegion<-adonis2(formula=SiteData~RegionName, data=fact1, permutations=9999, method='euc') # Permutational Multivariate Analysis of Variance using euclidean distances  
+permanovaRegion<-adonis2(formula=SiteData~RegionName, data=fact1, permutations=9999, method='bray') # Permutational Multivariate Analysis of Variance using bray-curtis  
 permanovaRegion # permanova results
 
 ## ANOSIM ##
 
 anosim1<-anosim(dis1,RegionName, permutations=9999) # analysis of similarities
 anosim1 # results anosim
-
-# do the same for data at the transect level
-# help:
-
-fact2<-read.csv('TWfactors.csv',h=T, row.names='X') # import table factors
-attach(fact2) # attach factors 
 

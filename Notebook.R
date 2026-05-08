@@ -1,4 +1,5 @@
 library(vegan)
+library(gclus)
 source('Function/coldiss.R')
 
 
@@ -47,7 +48,7 @@ permutest (mod, pairwise=T) # ANOVA like permutation test (see ?permutest)
 TukeyHSD(mod) # pairwise comparison
 boxplot(mod) # visualization of the dispersion
 
-permanovaRegion<-adonis2(formula=SiteData~RegionName, data=fact1, permutations=9999, method='euc') # Permutational Multivariate Analysis of Variance using euclidean distances  
+permanovaRegion<-adonis2(formula=SiteData~RegionName, data=fact1, permutations=9999, method='bray') # Permutational Multivariate Analysis of Variance using bray-curtis  
 permanovaRegion # permanova results
 
 anosim1<-anosim(dis1,RegionName, permutations=9999) # analysis of similarities

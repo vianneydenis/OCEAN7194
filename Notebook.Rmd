@@ -11,6 +11,7 @@ Script + data analysis adpated from Ribas Deulofeu et al. 2016
 
 ```{r eval = TRUE, echo=T, message=F, warning=F}
 library(vegan)
+library(gclus)
 source('Function/coldiss.R')
 ```
 
@@ -110,7 +111,7 @@ boxplot(mod) # visualization of the dispersion
 Test of regional difference using permanova
 
 ```{r eval = TRUE, echo=T, message=F, warning=F}
-permanovaRegion<-adonis2(formula=SiteData~RegionName, data=fact1, permutations=9999, method='euc') # Permutational Multivariate Analysis of Variance using euclidean distances  
+permanovaRegion<-adonis2(formula=SiteData~RegionName, data=fact1, permutations=9999, method='bray') # Permutational Multivariate Analysis of Variance using bray-curtis  
 permanovaRegion # permanova results
 ```
 
